@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Atividades de Capacidade e Performance</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
 
 <?php
 // Configurações do banco de dados
@@ -63,6 +74,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <h2>Filtrar Atividades</h2>
     <form method="post" action="">
+	
+	<table class="table table-bordered">
+	  <tr>
+	  <td>
         <label for="nome_pessoa">Nome Pessoa:</label>
         <select name="nome_pessoa" id="nome_pessoa">
             <option value="">Todos</option>
@@ -74,7 +89,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             ?>
         </select><br><br>
-
+      </td>
+      <td>
         <label for="tipo_servico">Tipo Serviço:</label>
         <select name="tipo_servico" id="tipo_servico">
             <option value="">Todos</option>
@@ -86,6 +102,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             ?>
         </select><br><br>
+      </td>
+      <td>
 
         <label for="orgao">Orgão:</label>
         <select name="orgao" id="orgao">
@@ -98,14 +116,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             ?>
         </select><br><br>
+      </td>
+      <td>
 
         <label for="data_inicio">Data Início:</label>
         <input type="date" name="data_inicio" id="data_inicio" value="<?php echo htmlspecialchars($data_inicio); ?>"><br><br>
+      </td>
+      <td>
 
         <label for="data_termino">Data Término:</label>
         <input type="date" name="data_termino" id="data_termino" value="<?php echo htmlspecialchars($data_termino); ?>"><br><br>
+      </td>
+      <td>
+        <button type="submit" class="btn btn-warning">Aplicar Filtros</button>
+</tr>
+</table>
 
-        <button type="submit">Aplicar Filtros</button>
     </form>
 
 <?php if (isset($result) && $result->num_rows > 0): ?>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Cronograma de Atividades por responsavel</title>
+  <title>Cronograma de Atividades por responsavel v.0.6 </title>
   <meta http-equiv='refresh' content='60'>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -536,11 +536,13 @@ $mysqli->close();
 			echo "<table  class='table table-striped'>
 					<thead class='table-dark'>
 					<tr><center>
+					
+						<th><center>Atividade</center></th>
 						<th><center>Responsável</center></th>
 						<th><center>Atividades</center></th>
-						<th><center>Tipo</center></th>
-						<th><center>Minutos</center></th>
-						<th><center>Status</center></th>
+						<th><center>Assunto</center></th>
+						<th><center>Dt. Inicio</center></th>
+						<th><center>Dt.Termino</center></th>
 					</tr>
 					</thead> 
                     <tbody>
@@ -548,22 +550,12 @@ $mysqli->close();
 			// Itera sobre os resultados da query
 			while($row = $resultX->fetch_assoc()) {
 				echo "<tr>
-						<td>" . htmlspecialchars($row["Responsavel"]) . "</td>
+				        <td>" . htmlspecialchars($row["activitytype"]) . "</td>
+						<td>" . htmlspecialchars($row["Status_user"]) . "</td>
 						<td><center>" . htmlspecialchars($row["Tema"]) . "</center></td>					
+						<td><center>" . htmlspecialchars($row["subject"]) . "</center></td>											
 						<td><center>" . htmlspecialchars($row["date_start"]) . "</center></td>
 						<td><center>" . htmlspecialchars($row["due_date"]) . "<center></td>" ;
-							if ($row["status"] == "Completed") {
-								echo "<td><center><button type='button' class='btn btn-success'>". htmlspecialchars($row["status"]) . "</button></center></td>";
-							} elseif ($row["status"] == "Planned") {
-								echo "<td><center><button type='button' class='btn btn-info'>". htmlspecialchars($row["status"]) . "</button></center></td>";
-							} elseif ($row["status"] == "In Progress") {
-								echo "<td><center><button type='button' class='btn btn-warning'>". htmlspecialchars($row["status"]) . "</button></center></td>";
-							} elseif ($row["status"] == "Not Started") {
-								echo "<td><center><button type='button' class='btn btn-danger'>". htmlspecialchars($row["status"]) . "</button></center></td>";
-							} else {
-								// Caso não seja nenhum desses, exibe o status como texto
-								echo "<td><center>". htmlspecialchars($row["status"]) . "</center></td>";
-							}
 					  echo "</td></tr>";
 			}
 			  echo " </tbody>

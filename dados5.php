@@ -86,10 +86,10 @@ $tema = isset($_POST['tema']) ? $mysqli->real_escape_string($_POST['tema']) : ''
 $date_start = isset($_POST['date_start']) ? $mysqli->real_escape_string($_POST['date_start']) : '';
 $date_end = isset($_POST['date_end']) ? $mysqli->real_escape_string($_POST['date_end']) : '';
 
-//if (empty($date_start) && empty($date_end)) {
-//    $date_start = date('Y-m-01'); 
-//    $date_end = date('Y-m-t'); 
-//}
+if (empty($date_start) && empty($date_end)) {
+    $date_start = date('Y-m-01'); 
+    $date_end = date('Y-m-t'); 
+}
 
 // Construir a query principal com os filtros
 $query = "
@@ -475,23 +475,19 @@ $mysqli->close();
 					 </table>
  					</div>";
 			} else {
-			 				    echo "<div class='alert alert-dark alert-dismissible fade show'>
-                                <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
-                                 <strong>Not Found!</strong> Nenhum resultado encontrado.
-                                </div>";
-
+				echo "<div class='alert alert-dark alert-dismissible fade show'>
+				<button type='button' class='btn-close' data-bs-dismiss='alert'></button>
+				 <strong>Not Found!</strong> Nenhum resultado encontrado.
+				</div>";
 			}
-			
 	?>
 	</div>
   
   	<div class="container mt-1">
-
 	   <div id="ListTaskGraficao" class="collapse">
 		 <?php 
 				$mysqlix = new mysqli($host, $user, $pass, $db);
 				$result = $mysqlix->query($query_tasks);
-
 				// Checa se há resultados
 				if ($result->num_rows > 0) {
 					// Início do bloco de script do Google Charts
@@ -501,11 +497,9 @@ $mysqli->close();
 					echo 'google.charts.setOnLoadCallback(drawChart);';
 					echo 'function drawChart() {';
 					echo 'var data = new google.visualization.DataTable();';
-
 					// Definindo colunas: Label e Value para o gráfico de pizza
 					echo "data.addColumn('string', 'Atividade');";
 					echo "data.addColumn('number', 'TotalRows');";
-
 					// Iterando sobre os resultados e montando os dados do gráfico
 					echo "data.addRows([";
 					while ($row = $result->fetch_assoc()) {
@@ -514,19 +508,16 @@ $mysqli->close();
 						echo "['" . $label . "', " . $row['TotalRows'] . "],";
 					}
 					echo "]);";
-
 					// Definições do gráfico de pizza
 					echo 'var options = {';
 					echo "'title': 'Distribuição de Atividades por Tipo, Responsável e Status',";
 					echo "'pieHole': 0.4,"; // Para gráfico de rosca
 					echo "'is3D': true"; // Deixa o gráfico em 3D (opcional)
 					echo '};';
-
 					echo 'var chart = new google.visualization.PieChart(document.getElementById("piechart"));';
 					echo 'chart.draw(data, options);';
 					echo '}';
 					echo '</script>';
-
 					// Exibindo o container para o gráfico
 					echo '<div id="piechart" style="width:100%; height: 100%;"></div>';
 				} else {
@@ -534,20 +525,14 @@ $mysqli->close();
                                 <button type='button' class='btn-close' data-bs-dismiss='alert'></button>
                                  <strong>Not Found!</strong> Nenhum resultado encontrado.
                                 </div>";
-
-					
 				}
 		?>
 	</div>
   </div>
 	<?php
 		// Executa a query
-
 		$mysqli = new mysqli($host, $user, $pass, $db);
-		
 		$result = $mysqli->query($query);
-
-
 		// Checa se há resultados
 		if ($result->num_rows > 0) {
 			// Início do bloco de script do Google Charts

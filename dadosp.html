@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PivotTable</title>
+    <link rel="stylesheet" href="pivot.css">
+    <script src="pivot.js"></script>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <div id="pivot-table"></div>
+    <script>
+        $(document).ready(function() {
+            $.getJSON('query.php', function(data) {
+                $("#pivot-table").pivotUI(data, {
+                    rows: ["activityid", "subject", "activitytype"],
+                    cols: ["date_start", "due_date"],
+                    aggregatorName: "Sum",
+                    vals: ["duration_minute"],
+                    rendererName: "Table"
+                });
+            });
+        });
+    </script>
+</body>
+</html>

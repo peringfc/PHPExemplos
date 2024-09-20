@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2.0/dist/css/adminlte.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <!-- AdminLTE JS -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2.0/dist/js/adminlte.min.js"></script>
+</head>
+<body>
+     <div class="alert alert-light">
+     <h3>Atividades</h3> 
+    </div>
+    <div>
+        <div>
+            <div class="container-fluid">
+                <!-- Info Boxes -->
+                <div class="row">
+				
+                    <div class="col-lg-2 col-2">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3 id="activitytype">0</h3>
+                                <p>Tipos de Atividades</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-2">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3 id="tema">0</h3>
+                                <p>Temas (assuntos)</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-tags"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-2">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3 id="totalProg">0</h3>
+                                <p>Atividades Programadas</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-2">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3 id="totalProg">0</h3>
+                                <p>Atividades Executadas</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-2">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3 id="hours">0</h3>
+                                <p>Horas Programadas</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-2">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3 id="hours">0</h3>
+                                <p>Horas Executadas</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Filters -->
+                <!-- Mensagem -->
+				
+				<div class="alert alert-light">
+				<strong>Atualizacao:</strong> 18/09/2024 02:56:26 <strong>Filtro aplicado para o Periodo inicial:</strong> 2024-09-01  <strong>ate:</strong> 2024-09-30.
+				</div>
+                <!-- Mensagem -->
+	
+				
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="responsavel">Responsável:</label>
+                            <select id="responsavel" class="form-control">
+                                <option value="">Todos</option>
+                                <!-- Opcional: Popule as opções dinamicamente com dados do banco -->
+                            </select>
+
+                        </div>
+                    </div>
+					
+					  <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="status">Status:</label>
+                            <select id="status" class="form-control">
+                                <option value="">Todos</option>
+                                <!-- Opcional: Popule as opções dinamicamente com dados do banco -->
+                            </select>
+                        </div>
+                    </div>
+					  <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="status">Tipo Atividade</label></br>
+                            <select id="Tipo" class="form-control">
+                                <option value="">Todos</option>
+                                <!-- Opcional: Popule as opções dinamicamente com dados do banco -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <button id="apply-filters" class="btn btn-primary mt-4">Aplicar Filtros</button>
+                    </div>
+                    <div class="col-md-3">
+                            <input type="text" id="tema" placeholder="Informe Tema" class="form-control">
+                    </div>
+					<div class="col-md-3">
+							<label for="date_start">Data Início:</label>
+							<input type="date" name="date_start" id="date_start" value="<?php echo htmlspecialchars(isset($_POST['date_start']) ? $_POST['date_start'] : ''); ?>">
+					</div>
+					<div class="col-md-3">
+							<label for="date_end">Data Fim : </label>
+							<input type="date" name="date_end" id="date_end" value="<?php echo htmlspecialchars(isset($_POST['date_end']) ? $_POST['date_end'] : ''); ?>">
+					</div>				
+                </div>
+			</div>
+			<!-- Grafico Grantt -->
+			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+			<script type="text/javascript">
+			  google.charts.load("current", {packages:["timeline"]});
+			  google.charts.setOnLoadCallback(drawChart);
+			  function drawChart() {
+				var container = document.getElementById('example2.1');
+				var chart = new google.visualization.Timeline(container);
+				var dataTable = new google.visualization.DataTable();
+
+				dataTable.addColumn({ type: 'string', id: 'Term' });
+				dataTable.addColumn({ type: 'string', id: 'Name' });
+				dataTable.addColumn({ type: 'date', id: 'Start' });
+				dataTable.addColumn({ type: 'date', id: 'End' });
+
+				dataTable.addRows([
+				  [ '1', 'George Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
+				  [ '2', 'John Adams',        new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
+				  [ '3', 'Thomas Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]]);
+
+				chart.draw(dataTable);
+			  }
+			</script>
+			<div id="example2.1" style="height: 200px;"></div>
+        </div>
+ 
+
+
+
+     </div>
+
+    <script>
+        function updateWidgets() {
+            var responsavel = $('#responsavel').val();
+            var tema = $('#tema').val();
+
+            $.getJSON('query.php', { responsavel: responsavel, tema: tema }, function(data) {
+                $('#activitytype').text(data.activitytype);
+                $('#tema').text(data.tema);
+                $('#hours').text(data.hours);
+                $('#totalProg').text(data.TotalProg);
+            });
+        }
+
+        $(document).ready(function() {
+            // Atualizar widgets ao carregar a página
+            updateWidgets();
+
+            // Atualizar widgets quando o botão de filtro for clicado
+            $('#apply-filters').on('click', function() {
+                updateWidgets();
+            });
+        });
+    </script>
+</body>
+</html>

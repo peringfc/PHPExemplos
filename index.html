@@ -14,9 +14,15 @@
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2.0/dist/js/adminlte.min.js"></script>
 </head>
 <body>
-     <div class="alert alert-light">
+    <!-- <div class="alert alert-light">
      <h3>Atividades</h3> 
-    </div>
+    </div> -->
+	<!-- Mensagem -->
+	
+	<div class="alert alert-light">
+	<strong>Atualizacao:</strong> 18/09/2024 02:56:26 <strong>Filtro aplicado para o Periodo inicial:</strong> 2024-09-01  <strong>ate:</strong> 2024-09-30.
+	</div>
+	<!-- Mensagem -->
     <div>
         <div>
             <div class="container-fluid">
@@ -40,7 +46,7 @@
                         <div class="small-box bg-success">
                             <div class="inner">
                                 <h3 id="tema">0</h3>
-                                <p>Temas (assuntos)</p>
+                                <p>Concluidos</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-tags"></i>
@@ -64,7 +70,7 @@
                         <div class="small-box bg-danger">
                             <div class="inner">
                                 <h3 id="totalProg">0</h3>
-                                <p>Atividades Executadas</p>
+                                <p>Atividades Em Aberto</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-tachometer-alt"></i>
@@ -98,16 +104,11 @@
                     </div>
                 </div>
                 <!-- Filters -->
-                <!-- Mensagem -->
-				
-				<div class="alert alert-light">
-				<strong>Atualizacao:</strong> 18/09/2024 02:56:26 <strong>Filtro aplicado para o Periodo inicial:</strong> 2024-09-01  <strong>ate:</strong> 2024-09-30.
-				</div>
-                <!-- Mensagem -->
+
 	
 				
-                <div class="row mb-3">
-                    <div class="col-md-3">
+                <div class="row mb-1">
+                    <div class="col-md-1">
                         <div class="form-group">
                             <label for="responsavel">Responsável:</label>
                             <select id="responsavel" class="form-control">
@@ -118,7 +119,7 @@
                         </div>
                     </div>
 					
-					  <div class="col-md-3">
+					  <div class="col-md-1">
                         <div class="form-group">
                             <label for="status">Status:</label>
                             <select id="status" class="form-control">
@@ -127,7 +128,7 @@
                             </select>
                         </div>
                     </div>
-					  <div class="col-md-3">
+					  <div class="col-md-1">
                         <div class="form-group">
                             <label for="status">Tipo Atividade</label></br>
                             <select id="Tipo" class="form-control">
@@ -136,20 +137,24 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <button id="apply-filters" class="btn btn-primary mt-4">Aplicar Filtros</button>
-                    </div>
-                    <div class="col-md-3">
+
+                    <div class="col-md-2">
+                            <label for="status">Tema</label></br>
                             <input type="text" id="tema" placeholder="Informe Tema" class="form-control">
                     </div>
-					<div class="col-md-3">
+					<div class="col-md-1">
 							<label for="date_start">Data Início:</label>
 							<input type="date" name="date_start" id="date_start" value="<?php echo htmlspecialchars(isset($_POST['date_start']) ? $_POST['date_start'] : ''); ?>">
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-1">
 							<label for="date_end">Data Fim : </label>
 							<input type="date" name="date_end" id="date_end" value="<?php echo htmlspecialchars(isset($_POST['date_end']) ? $_POST['date_end'] : ''); ?>">
 					</div>				
+
+                    <div class="col-md-1">
+                        <button id="apply-filters" class="btn btn-primary mt-4">Aplicar Filtros</button>
+                    </div>
+
                 </div>
 			</div>
 			<!-- Grafico Grantt -->
